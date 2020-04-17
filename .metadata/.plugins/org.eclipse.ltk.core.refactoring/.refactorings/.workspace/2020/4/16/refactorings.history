@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos&apos; to &apos;P01_mwa_coordinator&apos;" description="Rename resource &apos;frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos" name="P01_mwa_coordinator" stamp="1587149704825" updateReferences="true"/>
+</session>

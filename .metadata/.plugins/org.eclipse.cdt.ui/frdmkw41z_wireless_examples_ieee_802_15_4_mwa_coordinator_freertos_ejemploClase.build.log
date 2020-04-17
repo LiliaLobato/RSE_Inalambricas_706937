@@ -1,0 +1,6 @@
+22:18:33 **** Incremental Build of configuration Debug for project frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos_ejemploClase ****
+make -r -j4 all 
+make: Nothing to be done for 'all'.
+
+22:18:34 Build Finished. 0 errors, 0 warnings. (took 1s.796ms)
+
