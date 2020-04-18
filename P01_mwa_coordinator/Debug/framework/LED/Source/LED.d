@@ -1,6 +1,6 @@
 framework/LED/Source/LED.o framework/LED/Source/LED.d: \
  ../framework/LED/Source/LED.c \
- C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h \
+ C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h \
  ../framework/LED/Interface/LED.h ../framework/common/EmbeddedTypes.h \
  ../board/board.h ../drivers/fsl_gpio.h ../drivers/fsl_common.h \
  ../CMSIS/fsl_device_registers.h ../CMSIS/MKW41Z4.h \
@@ -13,7 +13,7 @@ framework/LED/Source/LED.o framework/LED/Source/LED.d: \
  ../framework/OSAbstraction/Interface/fsl_os_abstraction_config.h \
  ../framework/TimersManager/Source/TMR_Adapter.h
 
-C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h:
+C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h:
 
 ../framework/LED/Interface/LED.h:
 

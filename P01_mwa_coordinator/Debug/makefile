@@ -54,25 +54,25 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos.axf
+all: P01_mwa_coordinator.axf
 
 # Tool invocations
-frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos.axf: $(OBJS) $(USER_OBJS)
+P01_mwa_coordinator.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -L"C:\Embebidos\Redes\frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos\libs" -Xlinker -Map="frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T MKW41Z512xxx4_connectivity.ld -L ../source -o "frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -L"C:\Embebidos\Redes\P01_mwa_coordinator\libs" -Xlinker -Map="P01_mwa_coordinator.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T MKW41Z512xxx4_connectivity.ld -L ../source -o "P01_mwa_coordinator.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos.axf
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) P01_mwa_coordinator.axf
 	-@echo ' '
 
 post-build:
 	-@echo 'Performing post-build steps'
-	-arm-none-eabi-size "frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos.axf"; # arm-none-eabi-objcopy -v -O binary "frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos.axf" "frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos.bin" ; # checksum -p MKW41Z512xxx4 -d "frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos.bin";
+	-arm-none-eabi-size "P01_mwa_coordinator.axf"; # arm-none-eabi-objcopy -v -O binary "P01_mwa_coordinator.axf" "P01_mwa_coordinator.bin" ; # checksum -p MKW41Z512xxx4 -d "P01_mwa_coordinator.bin";
 	-@echo ' '
 
 .PHONY: all clean dependents post-build

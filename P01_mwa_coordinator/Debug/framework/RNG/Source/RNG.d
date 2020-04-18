@@ -1,6 +1,6 @@
 framework/RNG/Source/RNG.o framework/RNG/Source/RNG.d: \
  ../framework/RNG/Source/RNG.c \
- C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h \
+ C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h \
  ../framework/RNG/Interface/RNG_Interface.h \
  ../framework/common/EmbeddedTypes.h \
  ../framework/FunctionLib/FunctionLib.h ../framework/SecLib/SecLib.h \
@@ -13,7 +13,7 @@ framework/RNG/Source/RNG.o framework/RNG/Source/RNG.d: \
  ../drivers/fsl_common.h ../drivers/fsl_clock.h ../drivers/fsl_common.h \
  ../drivers/fsl_trng.h
 
-C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h:
+C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h:
 
 ../framework/RNG/Interface/RNG_Interface.h:
 

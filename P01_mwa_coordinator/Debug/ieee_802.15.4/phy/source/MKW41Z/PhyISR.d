@@ -1,7 +1,7 @@
 ieee_802.15.4/phy/source/MKW41Z/PhyISR.o \
  ieee_802.15.4/phy/source/MKW41Z/PhyISR.d: \
  ../ieee_802.15.4/phy/source/MKW41Z/PhyISR.c \
- C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h \
+ C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h \
  ../framework/common/EmbeddedTypes.h \
  ../ieee_802.15.4/phy/source/MKW41Z/Phy.h \
  ../ieee_802.15.4/phy/interface/PhyInterface.h \
@@ -19,7 +19,7 @@ ieee_802.15.4/phy/source/MKW41Z/PhyISR.o \
  ../framework/XCVR/MKW41Z4/fsl_xcvr_trim.h \
  ../framework/XCVR/MKW41Z4/fsl_xcvr.h
 
-C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h:
+C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h:
 
 ../framework/common/EmbeddedTypes.h:
 

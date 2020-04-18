@@ -1,7 +1,7 @@
 framework/Flash/Internal/Flash_Adapter.o \
  framework/Flash/Internal/Flash_Adapter.d: \
  ../framework/Flash/Internal/Flash_Adapter.c \
- C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h \
+ C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h \
  ../framework/Flash/Internal/Flash_Adapter.h \
  ../framework/common/EmbeddedTypes.h ../drivers/fsl_flash.h \
  ../drivers/fsl_common.h ../CMSIS/fsl_device_registers.h \
@@ -13,7 +13,7 @@ framework/Flash/Internal/Flash_Adapter.o \
  ../framework/OSAbstraction/Interface/fsl_os_abstraction_config.h \
  ../framework/Panic/Interface/Panic.h
 
-C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h:
+C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h:
 
 ../framework/Flash/Internal/Flash_Adapter.h:
 

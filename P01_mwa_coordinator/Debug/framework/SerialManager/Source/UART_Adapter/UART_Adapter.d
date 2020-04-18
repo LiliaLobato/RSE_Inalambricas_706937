@@ -1,7 +1,7 @@
 framework/SerialManager/Source/UART_Adapter/UART_Adapter.o \
  framework/SerialManager/Source/UART_Adapter/UART_Adapter.d: \
  ../framework/SerialManager/Source/UART_Adapter/UART_Adapter.c \
- C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h \
+ C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h \
  ../CMSIS/fsl_device_registers.h ../CMSIS/MKW41Z4.h \
  ../CMSIS/core_cm0plus.h ../CMSIS/core_cmInstr.h ../CMSIS/cmsis_gcc.h \
  ../CMSIS/core_cmFunc.h ../CMSIS/system_MKW41Z4.h \
@@ -14,7 +14,7 @@ framework/SerialManager/Source/UART_Adapter/UART_Adapter.o \
  ../board/pin_mux.h ../board/board.h ../drivers/fsl_gpio.h \
  ../drivers/fsl_lpuart.h
 
-C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h:
+C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h:
 
 ../CMSIS/fsl_device_registers.h:
 

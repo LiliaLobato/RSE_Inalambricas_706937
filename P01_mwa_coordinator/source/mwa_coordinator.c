@@ -67,6 +67,7 @@ static void    App_HandleMcpsInput(mcpsToNwkMessage_t *pMsgIn, uint8_t appInstan
 static void    App_TransmitUartData(void);
 static uint8_t App_WaitMsg(nwkMessage_t *pMsg, uint8_t msgType);
 static void    App_HandleKeys(uint8_t events);
+void LED_Refresh (uint8_t* msgCounter);
 
 void App_init( void );
 void AppThread (uint32_t argument);
@@ -340,7 +341,6 @@ void AppThread(uint32_t argument)
                       Serial_Print(interfaceId,", and short address 0x", gAllowToBlock_d);
                       Serial_PrintHex(interfaceId,(uint8_t *)&mShortAddress, 2, gPrtHexNoFormat_c);
                       Serial_Print(interfaceId,".\n\rReady to send and receive data over the UART.\n\r\n\r", gAllowToBlock_d);
-                      
                       MyTaskTimer_Start(); /*Start LED flashing with your task*/
                       gState = stateListen;
                       OSA_EventSet(mAppEvent, gAppEvtDummyEvent_c);
@@ -826,11 +826,48 @@ static void App_HandleMcpsInput(mcpsToNwkMessage_t *pMsgIn, uint8_t appInstance)
        or application layer when data has been received. We simply
        copy the received data to the UART. */
     Serial_SyncWrite( interfaceId,pMsgIn->msgData.dataInd.pMsdu, pMsgIn->msgData.dataInd.msduLength );
+    LED_Refresh (pMsgIn->msgData.dataInd.pMsdu);
+
     break;
     
   default:
     break;
   }
+}
+
+void LED_Refresh (uint8_t* msgCounter){
+	uint8_t counter[8] = "Counter:";
+	uint8_t error = 0;
+	uint8_t ledsCounter=0;
+	for (int i = 0; i<8; i++){
+		if (msgCounter[i] != counter[i]) {
+			error = 1;
+		}
+	}
+	if (!error){
+		ledsCounter = msgCounter[8]-48;
+		switch (ledsCounter){
+			case 0:
+				TurnOffLeds();
+				Led_TurnOn(RED);
+				break;
+			case 1:
+				TurnOffLeds();
+				Led_TurnOn(GREEN);
+				break;
+			case 2:
+				TurnOffLeds();
+				Led_TurnOn(BLUE);
+				break;
+			case 3:
+				TurnOffLeds();
+				TurnOnLeds();
+				break;
+			default:
+				TurnOffLeds();
+				break;
+			}
+	}
 }
 
 /******************************************************************************

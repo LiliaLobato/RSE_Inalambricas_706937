@@ -1,6 +1,6 @@
 framework/Keyboard/Source/Keyboard.o framework/Keyboard/Source/Keyboard.d: \
  ../framework/Keyboard/Source/Keyboard.c \
- C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h \
+ C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h \
  ../framework/common/EmbeddedTypes.h \
  ../framework/TimersManager/Interface/TimersManager.h \
  ../framework/GPIO/GPIO_Adapter.h ../CMSIS/fsl_device_registers.h \
@@ -13,7 +13,7 @@ framework/Keyboard/Source/Keyboard.o framework/Keyboard/Source/Keyboard.d: \
  ../framework/OSAbstraction/Interface/fsl_os_abstraction_config.h \
  ../framework/Keyboard/Interface/Keyboard.h
 
-C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h:
+C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h:
 
 ../framework/common/EmbeddedTypes.h:
 

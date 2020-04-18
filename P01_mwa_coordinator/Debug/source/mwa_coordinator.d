@@ -1,6 +1,6 @@
 source/mwa_coordinator.o source/mwa_coordinator.d: \
  ../source/mwa_coordinator.c \
- C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h \
+ C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h \
  ../source/mwa_coordinator.h ../framework/LED/Interface/LED.h \
  ../framework/common/EmbeddedTypes.h ../board/board.h \
  ../drivers/fsl_gpio.h ../drivers/fsl_common.h \
@@ -27,7 +27,7 @@ source/mwa_coordinator.o source/mwa_coordinator.d: \
  ../framework/OSAbstraction/Interface/fsl_os_abstraction_config.h \
  ../source/MyNewTask.h ../drivers/fsl_common.h
 
-C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h:
+C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h:
 
 ../source/mwa_coordinator.h:
 

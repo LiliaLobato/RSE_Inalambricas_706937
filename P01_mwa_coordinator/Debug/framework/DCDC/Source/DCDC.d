@@ -1,6 +1,6 @@
 framework/DCDC/Source/DCDC.o framework/DCDC/Source/DCDC.d: \
  ../framework/DCDC/Source/DCDC.c \
- C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h \
+ C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h \
  ../framework/common/EmbeddedTypes.h ../framework/DCDC/Interface/DCDC.h \
  ../drivers/fsl_adc16.h ../drivers/fsl_common.h \
  ../CMSIS/fsl_device_registers.h ../CMSIS/MKW41Z4.h \
@@ -12,7 +12,7 @@ framework/DCDC/Source/DCDC.o framework/DCDC/Source/DCDC.d: \
  ../framework/OSAbstraction/Interface/fsl_os_abstraction_config.h \
  ../board/board.h ../drivers/fsl_gpio.h
 
-C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h:
+C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h:
 
 ../framework/common/EmbeddedTypes.h:
 

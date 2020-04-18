@@ -1,7 +1,7 @@
 framework/SerialManager/Source/SerialManager.o \
  framework/SerialManager/Source/SerialManager.d: \
  ../framework/SerialManager/Source/SerialManager.c \
- C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h \
+ C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h \
  ../framework/SerialManager/Interface/SerialManager.h \
  ../framework/common/EmbeddedTypes.h ../framework/Panic/Interface/Panic.h \
  ../framework/MemManager/Interface/MemManager.h \
@@ -18,7 +18,7 @@ framework/SerialManager/Source/SerialManager.o \
  ../board/pin_mux.h \
  ../framework/SerialManager/Source/UART_Adapter/UART_Adapter.h
 
-C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h:
+C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h:
 
 ../framework/SerialManager/Interface/SerialManager.h:
 

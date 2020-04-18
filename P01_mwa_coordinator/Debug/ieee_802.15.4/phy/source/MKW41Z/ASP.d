@@ -1,7 +1,7 @@
 ieee_802.15.4/phy/source/MKW41Z/ASP.o \
  ieee_802.15.4/phy/source/MKW41Z/ASP.d: \
  ../ieee_802.15.4/phy/source/MKW41Z/ASP.c \
- C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h \
+ C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h \
  ../framework/common/EmbeddedTypes.h \
  ../framework/OSAbstraction/Interface/fsl_os_abstraction.h \
  ../framework/OSAbstraction/Interface/fsl_os_abstraction_config.h \
@@ -25,7 +25,7 @@ ieee_802.15.4/phy/source/MKW41Z/ASP.o \
  ../framework/Flash/Internal/Flash_Adapter.h ../drivers/fsl_flash.h \
  ../drivers/fsl_common.h ../drivers/fsl_clock.h
 
-C:/Embebidos/Redes/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos/source/app_preinclude.h:
+C:/Embebidos/Redes/P01_mwa_coordinator/source/app_preinclude.h:
 
 ../framework/common/EmbeddedTypes.h:
 

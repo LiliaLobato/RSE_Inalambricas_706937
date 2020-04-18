@@ -22,11 +22,20 @@
 #define gMyNewTaskEvent2_c (1 << 1)
 #define gMyNewTaskEvent3_c (1 << 2)
 
-#define gMyTaskPriority_c 3
+#define gMyTaskPriority_c 4
+#define gMyTaskPriority2_c 3
 #define gMyTaskStackSize_c 400
 
 void MyTaskTimer_Start(void);
 void MyTaskTimer_Stop(void);
 void MyTask_Init(void);
+
+void MyTask2Timer_Start(void);
+void MyTask2Timer_Stop(void);
+void MyTask2_Init(void);
+
+#define RED                              0x02
+#define GREEN                            0x04
+#define BLUE                             0x08
 
 #endif /* MYNEWTASK_H_ */
