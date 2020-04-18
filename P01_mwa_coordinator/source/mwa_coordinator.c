@@ -825,8 +825,15 @@ static void App_HandleMcpsInput(mcpsToNwkMessage_t *pMsgIn, uint8_t appInstance)
     /* The MCPS-Data indication is sent by the MAC to the network
        or application layer when data has been received. We simply
        copy the received data to the UART. */
-    Serial_SyncWrite( interfaceId,pMsgIn->msgData.dataInd.pMsdu, pMsgIn->msgData.dataInd.msduLength );
-    LED_Refresh (pMsgIn->msgData.dataInd.pMsdu);
+	  Serial_SyncWrite( interfaceId,pMsgIn->msgData.dataInd.pMsdu, pMsgIn->msgData.dataInd.msduLength );
+	  Serial_Print(interfaceId,"\r\tSource Address: ", gAllowToBlock_d);
+      Serial_PrintHex(interfaceId,(uint8_t *)&pMsgIn->msgData.dataInd.srcAddr, 2, gPrtHexNoFormat_c);
+	  Serial_Print(interfaceId,"\n\r\tLink Quality: ", gAllowToBlock_d);
+      Serial_PrintHex(interfaceId,(uint8_t *)&pMsgIn->msgData.dataInd.mpduLinkQuality, 1, gPrtHexNoFormat_c);
+	  Serial_Print(interfaceId,"\n\r\tPayload: ", gAllowToBlock_d);
+      Serial_PrintHex(interfaceId,(uint8_t *)&pMsgIn->msgData.dataInd.msduLength, 1, gPrtHexNoFormat_c);
+	  Serial_Print(interfaceId,"\n\r", gAllowToBlock_d);
+	  LED_Refresh (pMsgIn->msgData.dataInd.pMsdu);
 
     break;
     

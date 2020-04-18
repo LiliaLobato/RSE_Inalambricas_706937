@@ -25,6 +25,7 @@ tmrTimerID_t myTimerID_2 = gTmrInvalidTimerID_c;
 osaTaskId_t gMyTaskHandler_ID_2;
 /* Local variable to store the current counter of the LEDs */
 static uint8_t ledsCounter = 0;
+static uint8_t ledsCounter_next = 0;
 
 /* This is the function called by the Timer 1 each time it expires */
 static void myTaskTimerCallback(void *param)
@@ -103,30 +104,31 @@ void My_Task_2 (osaTaskParam_t argument)
 			TurnOffLeds(); /* Ensure all LEDs are turned off */
 			break;
 		case gMyNewTaskEvent2_c: /* Event called from myTaskTimerCallback */
+			ledsCounter = ledsCounter_next;
 			switch (ledsCounter){
 				case 0:
 					TurnOffLeds();
 					Led_TurnOn(RED);
-					ledsCounter = 1;
+					ledsCounter_next = 1;
 					break;
 				case 1:
 					TurnOffLeds();
 					Led_TurnOn(GREEN);
-					ledsCounter = 2;
+					ledsCounter_next = 2;
 					break;
 				case 2:
 					TurnOffLeds();
 					Led_TurnOn(BLUE);
-					ledsCounter = 3;
+					ledsCounter_next = 3;
 					break;
 				case 3:
 					TurnOffLeds();
 					TurnOnLeds();
-					ledsCounter = 0;
+					ledsCounter_next = 0;
 					break;
 				default:
 					TurnOffLeds();
-					ledsCounter = 0;
+					ledsCounter_next = 0;
 					break;
 			}
 			break;

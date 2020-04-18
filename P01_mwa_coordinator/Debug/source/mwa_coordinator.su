@@ -8,9 +8,9 @@ mwa_coordinator.c:608:16:App_StartCoordinator	40	static
 mwa_coordinator.c:711:16:App_SendAssociateResponse	32	static
 mwa_coordinator.c:784:16:App_HandleMlmeInput	16	static
 mwa_coordinator.c:813:13:App_HandleMcpsInput	16	static
-mwa_coordinator.c:838:6:LED_Refresh	40	static
-mwa_coordinator.c:884:16:App_WaitMsg	16	static
-mwa_coordinator.c:913:13:App_TransmitUartData	24	static
-mwa_coordinator.c:995:13:App_HandleKeys	16	static
-mwa_coordinator.c:1027:14:MLME_NWK_SapHandler	16	static
-mwa_coordinator.c:1035:14:MCPS_NWK_SapHandler	16	static
+mwa_coordinator.c:845:6:LED_Refresh	40	static
+mwa_coordinator.c:891:16:App_WaitMsg	16	static
+mwa_coordinator.c:920:13:App_TransmitUartData	24	static
+mwa_coordinator.c:1002:13:App_HandleKeys	16	static
+mwa_coordinator.c:1034:14:MLME_NWK_SapHandler	16	static
+mwa_coordinator.c:1042:14:MCPS_NWK_SapHandler	16	static
