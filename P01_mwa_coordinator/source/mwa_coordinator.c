@@ -552,7 +552,7 @@ static void App_HandleScanEdConfirm(nwkMessage_t *pMsg)
       }      
 #else      
   /* Select default channel */
-  mLogicalChannel = 11;
+  mLogicalChannel = 0;
   
   /* Search for the channel with least energy */
   for(idx=0, n=0; n<16; n++)
@@ -569,6 +569,7 @@ static void App_HandleScanEdConfirm(nwkMessage_t *pMsg)
           idx++;
       }
   }
+  mLogicalChannel = 20;
 #endif /* gPHY_802_15_4g_d */     
 
   chMask &= ~(1 << mLogicalChannel);
@@ -708,13 +709,30 @@ static uint8_t App_StartCoordinator( uint8_t appInstance )
 *   errorAllocFailed:      A message buffer could not be allocated.
 *
 ******************************************************************************/
+struct NodeInfo
+{
+    uint16_t                assocShortAddress; 	/*!< Contains the short device address allocated by the coordinator */
+    uint64_t                deviceAddress; 		/*!< The address of the device requesting association. */
+    macCapabilityInfo_t     RxOnWhenIdle; 		/* Mask msgData.associateInd.capabilityInfo with gCapInfoRxWhenIdle_c
+     	 	 	 	 	 	 	 	 	 	 	 	 1 == TRUE 0 == FALSE*/
+    macCapabilityInfo_t     DeviceType; 		/* Mask msgData.associateInd.capabilityInfo with gCapInfoDeviceFfd_c
+     	 	 	 	 	 	 	 	 	 	 	 	 1 == FFD,  0 == RFD*/
+};
+#define NUM_ENDDEVICES 5
+#define SHORTADDR_ENDDEVICES 0x0001
+uint8_t Num_EndDevices = 0;
+uint8_t Same_EndDevices = 0;
+uint16_t ShortAddr_EndDevices = SHORTADDR_ENDDEVICES;
+struct NodeInfo endDevices[NUM_ENDDEVICES];
+
 static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstance)
 {
   mlmeMessage_t *pMsg;
   mlmeAssociateRes_t *pAssocRes;
+  uint8_t i_saved = 0;
  
   Serial_Print(interfaceId,"Sending the MLME-Associate Response message to the MAC...", gAllowToBlock_d);
- 
+
   /* Allocate a message for the MLME */
   pMsg = MSG_AllocType(mlmeMessage_t);
   if(pMsg != NULL)
@@ -725,6 +743,9 @@ static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstan
     /* Create the Associate response message data. */
     pAssocRes = &pMsg->msgData.associateRes;
 
+    /* Get the 64 bit address of the device requesting association. */
+    FLib_MemCpy(&pAssocRes->deviceAddress, &pMsgIn->msgData.associateInd.deviceAddress, 8);
+
     /* Assign a short address to the device. In this example we simply
        choose 0x0001. Though, all devices and coordinators in a PAN must have
        different short addresses. However, if a device do not want to use
@@ -733,7 +754,25 @@ static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstan
     if(pMsgIn->msgData.associateInd.capabilityInfo & gCapInfoAllocAddr_c)
     {
       /* Assign a unique short address less than 0xfffe if the device requests so. */
-      pAssocRes->assocShortAddress = 0x0001;
+      if (Num_EndDevices == 0){
+    	  pAssocRes->assocShortAddress = ShortAddr_EndDevices;
+    	  //Serial_Print(interfaceId,"\r\tFirst End Device", gAllowToBlock_d);
+      } else {
+    	  Same_EndDevices = 0;
+    	  for (uint8_t i=0; i< NUM_ENDDEVICES ;i++){
+    		  if (pAssocRes->deviceAddress == endDevices[i].deviceAddress){
+    			  pAssocRes->assocShortAddress = endDevices[i].assocShortAddress;
+    			  Same_EndDevices = 1;
+    			  i_saved = i;
+    	    	  //Serial_Print(interfaceId,"\r\tSaved Device", gAllowToBlock_d);
+    		  }
+    	  }
+    	  if ( 0 == Same_EndDevices){
+    		  ShortAddr_EndDevices++;
+    		  pAssocRes->assocShortAddress = ShortAddr_EndDevices;
+        	  //Serial_Print(interfaceId,"\r\tNew End Device", gAllowToBlock_d);
+    	  }
+      }
     }
     else
     {
@@ -741,8 +780,6 @@ static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstan
          the PAN (Associate successful) but that long addressing is used.*/
       pAssocRes->assocShortAddress = 0xFFFE;
     }
-    /* Get the 64 bit address of the device requesting association. */
-    FLib_MemCpy(&pAssocRes->deviceAddress, &pMsgIn->msgData.associateInd.deviceAddress, 8);
     /* Association granted. May also be gPanAtCapacity_c or gPanAccessDenied_c. */
     pAssocRes->status = gSuccess_c;
     /* Do not use security */
@@ -755,8 +792,41 @@ static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstan
     /* Send the Associate Response to the MLME. */
     if( gSuccess_c == NWK_MLME_SapHandler( pMsg, macInstance ) )
     {
-      Serial_Print( interfaceId,"Done\n\r", gAllowToBlock_d );
-      return errorNoError;
+		Serial_Print( interfaceId,"Done\n\r", gAllowToBlock_d );
+		if ( 0 == Same_EndDevices){
+			endDevices[Num_EndDevices].deviceAddress = pAssocRes->deviceAddress;
+			endDevices[Num_EndDevices].assocShortAddress = pAssocRes->assocShortAddress;
+			endDevices[Num_EndDevices].RxOnWhenIdle = (pMsgIn->msgData.associateInd.capabilityInfo  & gCapInfoRxWhenIdle_c) == gCapInfoRxWhenIdle_c ? 1 : 0;
+			endDevices[Num_EndDevices].DeviceType = (pMsgIn->msgData.associateInd.capabilityInfo  & gCapInfoDeviceFfd_c) == gCapInfoDeviceFfd_c ? 1 : 0;
+			Serial_Print(interfaceId,"\r\tEnd Device saved at: ", gAllowToBlock_d);
+			Serial_PrintHex(interfaceId,(uint8_t *) &Num_EndDevices, 1, gPrtHexNoFormat_c);
+			Serial_Print(interfaceId,"\n\r\tDevice Address: 0x", gAllowToBlock_d);
+			Serial_PrintHex(interfaceId,(uint8_t *) &endDevices[Num_EndDevices].deviceAddress, 2, gPrtHexNoFormat_c);
+			Serial_Print(interfaceId,"\n\r\tShort Address: 0x", gAllowToBlock_d);
+			Serial_PrintHex(interfaceId,(uint8_t *) &endDevices[Num_EndDevices].assocShortAddress, 2, gPrtHexNoFormat_c);
+			Serial_Print(interfaceId,"\n\r\tRX on Idle: ", gAllowToBlock_d);
+			Serial_PrintHex(interfaceId,(uint8_t *) &endDevices[Num_EndDevices].RxOnWhenIdle, 1, gPrtHexNoFormat_c);
+			Serial_Print(interfaceId,"\n\r\tDevide Type: ", gAllowToBlock_d);
+			Serial_PrintHex(interfaceId,(uint8_t *) &endDevices[Num_EndDevices].DeviceType, 1, gPrtHexNoFormat_c);
+			Serial_Print(interfaceId,"\n\n\r", gAllowToBlock_d);
+
+			Num_EndDevices = Num_EndDevices==(NUM_ENDDEVICES-1) ? 0 : Num_EndDevices+1;
+
+		} else {
+			Serial_Print(interfaceId,"\r\tEnd Device info retrieved from: ", gAllowToBlock_d);
+			Serial_PrintHex(interfaceId,(uint8_t *) &i_saved, 1, gPrtHexNoFormat_c);
+			Serial_Print(interfaceId,"\n\r\tDevice Address: 0x", gAllowToBlock_d);
+			Serial_PrintHex(interfaceId,(uint8_t *) &endDevices[i_saved].deviceAddress, 2, gPrtHexNoFormat_c);
+			Serial_Print(interfaceId,"\n\r\tShort Address: 0x", gAllowToBlock_d);
+			Serial_PrintHex(interfaceId,(uint8_t *) &endDevices[i_saved].assocShortAddress, 2, gPrtHexNoFormat_c);
+			Serial_Print(interfaceId,"\n\r\tRX on Idle: ", gAllowToBlock_d);
+			Serial_PrintHex(interfaceId,(uint8_t *) &endDevices[i_saved].RxOnWhenIdle, 1, gPrtHexNoFormat_c);
+			Serial_Print(interfaceId,"\n\r\tDevide Type: ", gAllowToBlock_d);
+			Serial_PrintHex(interfaceId,(uint8_t *) &endDevices[i_saved].DeviceType, 1, gPrtHexNoFormat_c);
+			Serial_Print(interfaceId,"\n\n\r", gAllowToBlock_d);
+		}
+
+		return errorNoError;
     }
     else
     {

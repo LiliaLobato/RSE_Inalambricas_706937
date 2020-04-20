@@ -146,7 +146,7 @@ static anchor_t mMcpsNwkInputQueue;
 
 static tmrTimerID_t mTimer_c = gTmrInvalidTimerID_c;
 
-static const uint64_t mExtendedAddress  = mMacExtendedAddress_c;
+static const uint64_t mExtendedAddress  = 0x55;//mMacExtendedAddress_c;
 static instanceId_t   macInstance;
 static uint8_t        interfaceId;
 osaEventId_t          mAppEvent;
