@@ -2,35 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Received an MLME-Asso" key="selection"/>
+		<item value="Same_EndDevices" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="Received an MLME-Asso"/>
-			<item value="PWR_CheckIfDeviceCanGoToSleep"/>
-			<item value="Sleep"/>
-			<item value="pIB"/>
-			<item value="beacon"/>
-			<item value="beacons"/>
-			<item value="beaconOrder"/>
+			<item value="Save_EndDevices"/>
+			<item value="mLogicalChannel"/>
+			<item value="channel"/>
 			<item value="mExtendedAddress"/>
-			<item value="mShortAddress"/>
-			<item value="App_StartCoordinator"/>
-			<item value="PIB"/>
-			<item value="pib"/>
-			<item value="App_"/>
-			<item value="App_lim"/>
+			<item value="capabilityInfo"/>
+			<item value="macCapabilityInfo_tag"/>
+			<item value="device "/>
+			<item value="device type"/>
+			<item value="ffd"/>
+			<item value="rfd"/>
+			<item value="mlmeAssociateRes_t"/>
+			<item value="mlmeSetLinkReq_t"/>
+			<item value="mlmeSetLinkReq_tag"/>
+			<item value="Rx"/>
+			<item value="RxOnWhenIdle"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Same_EndDevices"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="336" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="454" key="DIALOG_HEIGHT"/>
-		<item value="-323" key="DIALOG_X_ORIGIN"/>
+		<item value="9" key="DIALOG_X_ORIGIN"/>
 		<item value="284" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

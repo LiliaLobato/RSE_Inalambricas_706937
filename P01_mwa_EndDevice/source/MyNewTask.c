@@ -167,6 +167,7 @@ gMyTaskHandler_ID_2 = OSA_TaskCreate(OSA_TASK(My_Task_2), NULL);
 void MyTask2_Reload(int value)
 {
 	ledsCounter = value;
+	ledsCounter_next = value+1;
 	TMR_StopTimer(myTimerID_2);
 	MyTask2Timer_Start();
 }
