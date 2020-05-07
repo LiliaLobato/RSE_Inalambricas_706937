@@ -86,6 +86,9 @@ enum
 #define ONOFF_SERVER
 #define ONOFF_CLIENT
 
+#define CLD_TEMPERATURE_MEASUREMENT
+#define TEMPERATURE_MEASUREMENT_SERVER
+
 #ifdef BUILD_OTA
 #define CLD_OTA
 #define OTA_CLIENT
@@ -146,12 +149,28 @@ enum
 /****************************************************************************/
 
 /****************************************************************************/
-/*             Basic Cluster - Optional Commands                            */
-/*                                                                          */
-/* Add the following #define's to your zcl_options.h file to add optional   */
-/* commands to the basic cluster.                                           */
+/* Temperature Measurement Cluster - Optional Attributes */
+/* */
+/* Add the following #define's to your zcl_options.h file to add optional */
+/* attributes to the time cluster. */
+/****************************************************************************/
+#define CLD_TEMPMEAS_ATTR_TOLERANCE
+
+/****************************************************************************/
+/* Basic Cluster - Optional Commands */
+/* */
+/* Add the following #define's to your zcl_options.h file to add optional */
+/* commands to the basic cluster. */
 /****************************************************************************/
 #define CLD_BAS_CMD_RESET_TO_FACTORY_DEFAULTS
+
+/****************************************************************************/
+/* OnOff Cluster - Optional Commands */
+/* */
+/* Add the following #define's to your zcl_options.h file to add optional */
+/* commands to the OnOff cluster. */
+/****************************************************************************/
+#define CLD_ONOFF_CMD_OFF_WITH_EFFECT
 
 /****************************************************************************/
 /*             OTA Cluster - Optional Attributes                 */
