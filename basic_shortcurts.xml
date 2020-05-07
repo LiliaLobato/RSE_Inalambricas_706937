@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ZigBee>
+	<Settings>
+		<DefaultCmds>
+			<MacroCmd>GetVersion</MacroCmd>
+			<MacroCmd>SetChannelMask</MacroCmd>
+			<MacroCmd>StartNetworkScan</MacroCmd>
+			<MacroCmd>PermitJoining.Request</MacroCmd>
+			<MacroCmd>ActiveEndpoint.Request</MacroCmd>
+			<MacroCmd>SimpleDescriptor.Request</MacroCmd>
+			<MacroCmd>IdentifyQuery</MacroCmd>
+			<MacroCmd>ReadAttribute.Request</MacroCmd>
+			<MacroCmd>OnOffWithNoEffects</MacroCmd>
+			<MacroCmd>WriteAttribute.Request</MacroCmd>
+			<MacroCmd>ManagementLeave.Request</MacroCmd>
+			<MacroCmd>ErasePersistentData</MacroCmd>
+		</DefaultCmds>
+	</Settings>
+</ZigBee>

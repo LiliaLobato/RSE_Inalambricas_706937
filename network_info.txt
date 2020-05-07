@@ -1,0 +1,13 @@
+Channel = 17
+
+Inteval = ff
+
+ShortAddress(NWKAddress) = 41 A7
+Extended Address(IEEEAddress) = 64 E0 EC 3F 4F E4 67 A9
+
+Endpoint = 1
+
+InClusterList = 00 00 00 04 00 03 00 06
+0006 -> es del interruptor
+
+AddressMode = 02
