@@ -123,3 +123,312 @@ Binding(CTRL+U,
 
 !ENTRY org.eclipse.launchbar.core 2 0 2020-05-07 01:54:08.123
 !MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-05-07 12:34:58.534
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@30a1e7c1): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión. java.lang.Exception: localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-05-07 12:34:58.534
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+!STACK 0
+java.lang.Exception: localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 12:35:14.981
+!MESSAGE SWO session connected on port 2334->64525 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 12:35:15.086
+!MESSAGE Telnet session connected on port 2335->64526 @ 127.0.0.1
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2020-05-07 13:27:02.862
+!MESSAGE Program file does not exist
+!STACK 0
+java.io.FileNotFoundException: C:\Embebidos\Redes\Zigbee_ejemploClase_Router\Debug\Zigbee_ejemploClase_Router.axf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:131)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:315)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:142)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:94)
+	at com.nxp.mcuxpresso.core.debug.support.segger.launches.JLinkLaunchDelegate.launch(JLinkLaunchDelegate.java:290)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:862)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:720)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1029)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2020-05-07 13:27:02.862
+!MESSAGE C:\Embebidos\Redes\Zigbee_ejemploClase_Router\Debug\Zigbee_ejemploClase_Router.axf not found
+!STACK 0
+java.io.FileNotFoundException: C:\Embebidos\Redes\Zigbee_ejemploClase_Router\Debug\Zigbee_ejemploClase_Router.axf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:131)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:315)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:142)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:94)
+	at com.nxp.mcuxpresso.core.debug.support.segger.launches.JLinkLaunchDelegate.launch(JLinkLaunchDelegate.java:290)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:862)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:720)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1029)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-05-07 13:27:30.493
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@584f5711): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión. java.lang.Exception: localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-05-07 13:27:30.493
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+!STACK 0
+java.lang.Exception: localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2020-05-07 13:27:32.332
+!MESSAGE Error in final launch sequence:
+
+Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:242)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:94)
+	at com.nxp.mcuxpresso.core.debug.support.segger.launches.JLinkLaunchDelegate.launch(JLinkLaunchDelegate.java:290)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:862)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:720)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1029)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.Exception: localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-05-07 13:27:32.851
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+!STACK 0
+java.lang.Exception: localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 13:28:05.361
+!MESSAGE SWO session connected on port 2334->64814 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 13:28:06.291
+!MESSAGE Telnet session connected on port 2335->64815 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 13:47:24.300
+!MESSAGE SWO session connected on port 2334->64874 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 13:47:25.293
+!MESSAGE Telnet session connected on port 2335->64875 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 13:57:25.088
+!MESSAGE SWO session connected on port 2334->64917 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 13:57:26.055
+!MESSAGE Telnet session connected on port 2335->64918 @ 127.0.0.1
+
+!ENTRY org.eclipse.cdt.dsf 4 -1 2020-05-07 13:57:32.411
+!MESSAGE Uncaught exception in DSF executor thread
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.dsf.service.AbstractDsfService.shutdown(AbstractDsfService.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence$ServiceShutdownStep.execute(ShutdownSequence.java:45)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.executeStep(Sequence.java:475)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$2(Sequence.java:390)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleSuccess(Sequence.java:437)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:391)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 -1 2020-05-07 13:57:32.588
+!MESSAGE Session shutdown failed
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 0 2020-05-07 13:57:32.589
+!MESSAGE Unhandled exception when executing Sequence org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence@59925455, step #1
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.dsf.service.AbstractDsfService.shutdown(AbstractDsfService.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence$ServiceShutdownStep.execute(ShutdownSequence.java:45)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.executeStep(Sequence.java:475)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$2(Sequence.java:390)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleSuccess(Sequence.java:437)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:391)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-05-07 13:57:32.684
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@2d8de1bb): Status ERROR: org.eclipse.cdt.dsf code=0 Unhandled exception when executing Sequence org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence@59925455, step #1 java.lang.NullPointerException' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 0 2020-05-07 13:57:32.684
+!MESSAGE Unhandled exception when executing Sequence org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence@59925455, step #1
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.dsf.service.AbstractDsfService.shutdown(AbstractDsfService.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence$ServiceShutdownStep.execute(ShutdownSequence.java:45)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.executeStep(Sequence.java:475)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$2(Sequence.java:390)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleSuccess(Sequence.java:437)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:391)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 14:02:11.567
+!MESSAGE SWO session connected on port 2334->64960 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 14:02:12.557
+!MESSAGE Telnet session connected on port 2335->64961 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 14:17:24.386
+!MESSAGE SWO session connected on port 2334->65009 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 14:17:25.369
+!MESSAGE Telnet session connected on port 2335->65010 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 14:26:02.232
+!MESSAGE SWO session connected on port 2334->62041 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 14:26:03.218
+!MESSAGE Telnet session connected on port 2335->62042 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 15:20:44.291
+!MESSAGE SWO session connected on port 2334->62269 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 15:20:45.270
+!MESSAGE Telnet session connected on port 2335->62270 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 15:29:16.574
+!MESSAGE SWO session connected on port 2334->62301 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 15:29:17.535
+!MESSAGE Telnet session connected on port 2335->62302 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 15:32:31.082
+!MESSAGE SWO session connected on port 2334->62323 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 15:32:32.087
+!MESSAGE Telnet session connected on port 2335->62324 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 15:42:17.293
+!MESSAGE SWO session connected on port 2334->62387 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 15:42:18.277
+!MESSAGE Telnet session connected on port 2335->62388 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 15:49:48.009
+!MESSAGE SWO session connected on port 2334->62444 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 15:49:48.985
+!MESSAGE Telnet session connected on port 2335->62445 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 15:56:53.125
+!MESSAGE SWO session connected on port 2334->62473 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 15:56:54.112
+!MESSAGE Telnet session connected on port 2335->62474 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-07 16:21:28.760
+!MESSAGE SWO session connected on port 2334->62734 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-07 16:21:29.719
+!MESSAGE Telnet session connected on port 2335->62735 @ 127.0.0.1
+
+!ENTRY org.eclipse.cdt.dsf 4 -1 2020-05-07 16:21:36.176
+!MESSAGE Uncaught exception in DSF executor thread
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.dsf.service.AbstractDsfService.shutdown(AbstractDsfService.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence$ServiceShutdownStep.execute(ShutdownSequence.java:45)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.executeStep(Sequence.java:475)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$2(Sequence.java:390)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleSuccess(Sequence.java:437)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:391)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 -1 2020-05-07 16:21:36.320
+!MESSAGE Session shutdown failed
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 0 2020-05-07 16:21:36.320
+!MESSAGE Unhandled exception when executing Sequence org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence@5e99854a, step #1
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.dsf.service.AbstractDsfService.shutdown(AbstractDsfService.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence$ServiceShutdownStep.execute(ShutdownSequence.java:45)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.executeStep(Sequence.java:475)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$2(Sequence.java:390)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleSuccess(Sequence.java:437)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:391)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-05-07 16:21:36.331
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@5fe11594): Status ERROR: org.eclipse.cdt.dsf code=0 Unhandled exception when executing Sequence org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence@5e99854a, step #1 java.lang.NullPointerException' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 0 2020-05-07 16:21:36.331
+!MESSAGE Unhandled exception when executing Sequence org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence@5e99854a, step #1
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.dsf.service.AbstractDsfService.shutdown(AbstractDsfService.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.ShutdownSequence$ServiceShutdownStep.execute(ShutdownSequence.java:45)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.executeStep(Sequence.java:475)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$2(Sequence.java:390)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleSuccess(Sequence.java:437)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:391)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)

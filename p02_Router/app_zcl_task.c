@@ -537,6 +537,10 @@ PUBLIC void vIdEffectTick(uint8 u8Endpoint)
 
         }
     }
+
+    sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MeasuredValue = (int16) BOARD_GetTemperature();
+    //sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MeasuredValue = (int16) sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MeasuredValue + 1;
+
 }
 #endif
 
@@ -575,6 +579,12 @@ PRIVATE void APP_vHandleClusterCustomCommands(tsZCL_CallBackEvent *psEvent)
             }
 #endif
         }
+        break;
+
+        case MEASUREMENT_AND_SENSING_CLUSTER_ID_TEMPERATURE_MEASUREMENT:
+        	sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MeasuredValue = 60;//(int16) BOARD_GetTemperature;
+        	sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MinMeasuredValue = 0;
+        	sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MaxMeasuredValue = 0;
         break;
 
         case GENERAL_CLUSTER_ID_IDENTIFY:
@@ -682,9 +692,9 @@ PRIVATE void APP_vZCL_DeviceSpecific_Init(void)
 	FLib_MemCpy(sBaseDeviceSwitch2.sBasicServerCluster.au8DateCode, "20170310", CLD_BAS_DATE_SIZE);
 	FLib_MemCpy(sBaseDeviceSwitch2.sBasicServerCluster.au8SWBuildID, "1000-0001", CLD_BAS_SW_BUILD_SIZE);
 
-	sBaseDevice.sTemperatureMeasurementServerCluster.i16MeasuredValue = 0;
-	sBaseDevice.sTemperatureMeasurementServerCluster.i16MinMeasuredValue = 0;
-	sBaseDevice.sTemperatureMeasurementServerCluster.i16MaxMeasuredValue = 0;
+	sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MeasuredValue = 0;
+	sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MinMeasuredValue = 0;
+	sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MaxMeasuredValue = 0;
 
     #ifdef CLD_BAS_ATTR_MANUFACTURER_VERSION_DETAILS
     FLib_MemCpy(sBaseDevice.sBasicServerCluster.au8ManufacturerVersionDetails, "Zigbee_Version_3.0", CLD_BAS_MANUFACTURER_VERSION_SIZE);

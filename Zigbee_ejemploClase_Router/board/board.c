@@ -199,6 +199,8 @@ void hardware_init(void)
         /* Init DCDC module */
         BOARD_DCDCInit();
         
+        BOARD_InitAdc();
+
         /* Install callbacks to handle enter and exit low power */
         #if cPWR_UsePowerDownMode
         BOARD_InstallLowPowerCallbacks();
