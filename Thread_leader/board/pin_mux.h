@@ -84,6 +84,11 @@ void BOARD_InitLPUART(void);
  */
 void BOARD_InitI2C(void);
 
+//CHANGE, ADDED FUNCTIONS TO INIT THE ACCEL
+void BOARD_I2C_ReleaseBus(void);
+void BOARD_I2C_ConfigurePins(void);
+
+
 #if defined(__cplusplus)
 }
 #endif

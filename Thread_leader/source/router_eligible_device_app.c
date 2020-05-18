@@ -191,10 +191,51 @@ void APP_Init
 {
 
     /////////////////////////////////////////////////////////////////
-    //HERE WE SHOULD INITIALIZE THE ACCELEROMETER
+    //HERE WE SHOULD INITIALIZE THE ACCELEROMETER //CHANGE
 
+    i2c_master_handle_t MasterHandle;
+    const uint8_t accel_address[] = {0x1CU, 0x1DU, 0x1EU, 0x1FU};
 
-    /////////////////////////////////////////////////////////////////
+    i2c_master_config_t i2cConfig;
+    uint32_t i2cSourceClock;
+    uint8_t acclIndex = 0;
+    uint8_t regResult = 0;
+    uint8_t array_addr_size = 0;
+    bool foundDevice = false;
+
+    /* Board pin, clock, debug console init */
+    BOARD_InitPins();
+    BOARD_BootClockRUN();
+    BOARD_I2C_ReleaseBus();
+    BOARD_I2C_ConfigurePins();
+
+    i2cSourceClock = CLOCK_GetFreq(I2C1_CLK_SRC);
+    gfxosHandle.base = I2C1;
+    gfxosHandle.i2cHandle = &MasterHandle;
+
+    I2C_MasterGetDefaultConfig(&i2cConfig);
+    I2C_MasterInit(I2C1, &i2cConfig, i2cSourceClock);
+    I2C_MasterTransferCreateHandle(I2C1, &MasterHandle, NULL, NULL);
+
+    /* Find sensor devices */
+    array_addr_size = sizeof(accel_address) / sizeof(accel_address[0]);
+    for (acclIndex = 0; acclIndex < array_addr_size; acclIndex++)
+    {
+        gfxosHandle.xfer.slaveAddress = accel_address[acclIndex];
+        if (FXOS_ReadReg(&gfxosHandle, WHO_AM_I_REG, &regResult, 1) == kStatus_Success)
+        {
+            foundDevice = true;
+            break;
+        }
+        if ((acclIndex == (array_addr_size - 1)) && (!foundDevice))
+        {
+            while (1) { };
+        }
+    }
+     /* Init accelerometer sensor */
+    while (FXOS_Init(&gfxosHandle) != kStatus_Success) { };
+
+    //// /////////////////////////////////////////////////////////////
     /* Initialize pointer to application task message queue */
     mpAppThreadMsgQueue = &appThreadMsgQueue;
 
