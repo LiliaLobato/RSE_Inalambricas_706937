@@ -54,6 +54,12 @@ Include Files
 #include "app_echo_udp.h"
 #endif
 
+//CHANGE: added files to accelerometer
+#include "fsl_fxos.h"
+#include "stdbool.h"
+#include "pin_mux.h"
+#include "clock_config.h"
+
 /*==================================================================================================
 Private macros
 ==================================================================================================*/
@@ -135,6 +141,9 @@ static void APP_AutoStart(void *param);
 static void APP_AutoStartCb(void *param);
 #endif
 
+static void APP_CoapAccelCb(coapSessionStatus_t sessionStatus, void *pData, coapSession_t *pSession, uint32_t dataLen);
+
+
 /*==================================================================================================
 Public global variables declarations
 ==================================================================================================*/
@@ -176,6 +185,9 @@ uint32_t leaderLedTimestamp = 0;
 taskMsgQueue_t *mpAppThreadMsgQueue = NULL;
 
 extern bool_t gEnable802154TxLed;
+
+fxos_handle_t gfxosHandle;
+fxos_data_t gsensorData;
 
 /*==================================================================================================
 Public functions
@@ -1540,30 +1552,6 @@ static void APP_AutoStartCb
 ADDED: here we added the functions for the CoAP URI 
 ==================================================================================================*/
 
-//CALLBACK FUNTCTION 
-static void APP_CoapAccelCb(coapSessionStatus_t sessionStatus,void *pData,coapSession_t *pSession,uint32_t dataLen)
-{
-    //we added the ahndler for the packet received 
-    uint8_t *pAckMsg = NULL;
-    uint32_t loadSize = 0;
-
-    if(gCoapGET_c == pSession->code)
-    {
-        pAckMsg = App_GetAccelDataString(); //HERE ADD THE FUCTION U WANT TO REPRODUCE EACH TIME 
-        loadSize = strlen((char*)pAckMsg);
-        COAP_Send(pSession, gCoapMsgTypeAckSuccessContent_c, pAckMsg, loadSize);
-    }
-    else
-    {
-        COAP_Send(pSession, gCoapMsgTypeEmptyAck_c, NULL, 0);
-    }
-
-    if(pAckMsg)
-    {
-        MEM_BufferFree(pAckMsg);
-    }
-}
-
 void *App_GetAccelDataString
 (
     void
@@ -1608,4 +1596,28 @@ void *App_GetAccelDataString
     pIndex += 5; *pIndex = ' ';
 
     return sendAccelData;
+}
+
+//CALLBACK FUNTCTION 
+static void APP_CoapAccelCb(coapSessionStatus_t sessionStatus,void *pData,coapSession_t *pSession,uint32_t dataLen)
+{
+    //we added the ahndler for the packet received 
+    uint8_t *pAckMsg = NULL;
+    uint32_t loadSize = 0;
+
+    if(gCoapGET_c == pSession->code)
+    {
+        pAckMsg = App_GetAccelDataString(); //HERE ADD THE FUCTION U WANT TO REPRODUCE EACH TIME 
+        loadSize = strlen((char*)pAckMsg);
+        COAP_Send(pSession, gCoapMsgTypeAckSuccessContent_c, pAckMsg, loadSize);
+    }
+    else
+    {
+        COAP_Send(pSession, gCoapMsgTypeEmptyAck_c, NULL, 0);
+    }
+
+    if(pAckMsg)
+    {
+        MEM_BufferFree(pAckMsg);
+    }
 }
