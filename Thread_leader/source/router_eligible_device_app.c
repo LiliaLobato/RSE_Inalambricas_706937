@@ -85,6 +85,11 @@ Private macros
 
 #define APP_DEFAULT_DEST_ADDR                   in6addr_realmlocal_allthreadnodes
 
+//CHANGE: we add our URI for the ACCELEROMETER
+#define APP_ACCEL_URI_PATH                      "/accel"
+enum{ xData, yData, zData}; //Enums for accelerometer data organization
+#define ACCEL_BUFFER_SIZE                       (24U)
+
 /*==================================================================================================
 Private type definitions
 ==================================================================================================*/
@@ -140,6 +145,10 @@ const coapUriPath_t gAPP_SINK_URI_PATH = {SizeOfString(APP_SINK_URI_PATH), (uint
 const coapUriPath_t gAPP_RESET_URI_PATH = {SizeOfString(APP_RESET_TO_FACTORY_URI_PATH), (uint8_t *)APP_RESET_TO_FACTORY_URI_PATH};
 #endif
 
+//CHANGE: we add the coapUriPAth_t four our new resource
+const coapUriPath_t gAPP_ACCEL_URI_PATH = {SizeOfString(APP_ACCEL_URI_PATH), (uint8_t *)APP_ACCEL_URI_PATH};
+
+
 /* Application state/mode */
 appDeviceState_t gAppDeviceState[THR_MAX_INSTANCES];
 appDeviceMode_t gAppDeviceMode[THR_MAX_INSTANCES];
@@ -180,6 +189,12 @@ void APP_Init
     void
 )
 {
+
+    /////////////////////////////////////////////////////////////////
+    //HERE WE SHOULD INITIALIZE THE ACCELEROMETER
+
+
+    /////////////////////////////////////////////////////////////////
     /* Initialize pointer to application task message queue */
     mpAppThreadMsgQueue = &appThreadMsgQueue;
 
@@ -487,6 +502,8 @@ static void APP_InitCoapDemo
 {
     coapRegCbParams_t cbParams[] =  {{APP_CoapLedCb,  (coapUriPath_t *)&gAPP_LED_URI_PATH},
                                      {APP_CoapTempCb, (coapUriPath_t *)&gAPP_TEMP_URI_PATH},
+                                     //CHANGE: the new callback need to be added on init
+                                     {APP_CoapAccelCb, (coapUriPath_t*)&gAPP_ACCEL_URI_PATH},
 #if LARGE_NETWORK
                                      {APP_CoapResetToFactoryDefaultsCb, (coapUriPath_t *)&gAPP_RESET_URI_PATH},
 #endif
@@ -1479,5 +1496,75 @@ static void APP_AutoStartCb
 #endif
 
 /*==================================================================================================
-Private debug functions
+ADDED: here we added the functions for the CoAP URI 
 ==================================================================================================*/
+
+//CALLBACK FUNTCTION 
+static void APP_CoapAccelCb(coapSessionStatus_t sessionStatus,void *pData,coapSession_t *pSession,uint32_t dataLen)
+{
+    //we added the ahndler for the packet received 
+    uint8_t *pAckMsg = NULL;
+    uint32_t loadSize = 0;
+
+    if(gCoapGET_c == pSession->code)
+    {
+        pAckMsg = App_GetAccelDataString(); //HERE ADD THE FUCTION U WANT TO REPRODUCE EACH TIME 
+        loadSize = strlen((char*)pAckMsg);
+        COAP_Send(pSession, gCoapMsgTypeAckSuccessContent_c, pAckMsg, loadSize);
+    }
+    else
+    {
+        COAP_Send(pSession, gCoapMsgTypeEmptyAck_c, NULL, 0);
+    }
+
+    if(pAckMsg)
+    {
+        MEM_BufferFree(pAckMsg);
+    }
+}
+
+void *App_GetAccelDataString
+(
+    void
+)
+{
+    uint8_t dataElements = 3;
+    uint16_t AccRaw[dataElements];
+
+    /* Compute temperature */
+    uint8_t *pIndex = NULL;
+    uint8_t sAccel[] = "X=";
+    uint8_t *sendAccelData = MEM_BufferAlloc(ACCEL_BUFFER_SIZE);
+
+     /* Get counter value */
+    FXOS_ReadSensorData(&gfxosHandle, &gsensorData);
+
+    /* Get the X, Y and Z data from the sensor data structure in 14 bit left format data*/
+    AccRaw[xData] = (int16_t)((uint16_t)((uint16_t)gsensorData.accelXMSB << 8) | (uint16_t)gsensorData.accelXLSB);
+    AccRaw[yData] = (int16_t)((uint16_t)((uint16_t)gsensorData.accelYMSB << 8) | (uint16_t)gsensorData.accelYLSB);
+    AccRaw[zData] = (int16_t)((uint16_t)((uint16_t)gsensorData.accelZMSB << 8) | (uint16_t)gsensorData.accelZLSB);
+    if(NULL == sendAccelData)
+    {
+      return sendAccelData;
+    }
+
+    /* Clear data and reset buffers */
+    FLib_MemSet(sendAccelData, 0, ACCEL_BUFFER_SIZE);
+
+    /* Compute output */
+    pIndex = sendAccelData;
+    FLib_MemCpy(pIndex, sAccel, SizeOfString(sAccel));
+    pIndex += SizeOfString(sAccel);
+    NWKU_PrintDec((AccRaw[xData]), pIndex, 5, TRUE);
+    pIndex += 5; *pIndex = ' '; pIndex++;
+
+    *pIndex = 'Y'; pIndex++; *pIndex = '='; pIndex++;
+    NWKU_PrintDec((AccRaw[yData]), pIndex, 5, TRUE);
+    pIndex += 5; *pIndex = ' '; pIndex++;
+
+    *pIndex = 'Z'; pIndex++; *pIndex = '='; pIndex++;
+    NWKU_PrintDec((AccRaw[zData]), pIndex, 5, TRUE);
+    pIndex += 5; *pIndex = ' ';
+
+    return sendAccelData;
+}
