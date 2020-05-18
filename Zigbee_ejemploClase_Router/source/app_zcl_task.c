@@ -582,7 +582,7 @@ PRIVATE void APP_vHandleClusterCustomCommands(tsZCL_CallBackEvent *psEvent)
         break;
 
         case MEASUREMENT_AND_SENSING_CLUSTER_ID_TEMPERATURE_MEASUREMENT:
-        	sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MeasuredValue = 60;//(int16) BOARD_GetTemperature;
+        	sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MeasuredValue = (int16) BOARD_GetTemperature();
         	sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MinMeasuredValue = 0;
         	sBaseDeviceSwitch1.sTemperatureMeasurementServerCluster.i16MaxMeasuredValue = 0;
         break;
