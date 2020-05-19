@@ -141,7 +141,9 @@ static void APP_AutoStart(void *param);
 static void APP_AutoStartCb(void *param);
 #endif
 
-static void APP_CoapAccelCb(coapSessionStatus_t sessionStatus, void *pData, coapSession_t *pSession, uint32_t dataLen);
+static void APP_CoapAccelCb(coapSessionStatus_t sessionStatus, 
+                            void *pData, coapSession_t *pSession, 
+                            uint32_t dataLen);
 
 
 /*==================================================================================================
@@ -1599,7 +1601,8 @@ void *App_GetAccelDataString
 }
 
 //CALLBACK FUNTCTION 
-static void APP_CoapAccelCb(coapSessionStatus_t sessionStatus,void *pData,coapSession_t *pSession,uint32_t dataLen)
+static void APP_CoapAccelCb(coapSessionStatus_t sessionStatus,void *pData,
+                                    coapSession_t *pSession,uint32_t dataLen)
 {
     //we added the ahndler for the packet received 
     uint8_t *pAckMsg = NULL;
