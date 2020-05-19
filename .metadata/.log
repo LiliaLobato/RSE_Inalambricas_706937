@@ -621,3 +621,294 @@ Caused by: java.lang.IllegalArgumentException: Attempted to beginRule: R/, does 
 
 !ENTRY org.eclipse.cdt.core 1 0 2020-05-18 06:12:05.882
 !MESSAGE Indexed 'Thread_router' (0 sources, 0 headers) in 0 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY com.crt.log 1 0 2020-05-18 12:15:54.930
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.crt.debugcommon 1 0 2020-05-18 12:15:55.031
+!MESSAGE RedlinkServer telnet session connected on port 3025->59620 @ 127.0.0.1
+
+!ENTRY com.crt.debugcommon 4 0 2020-05-18 14:13:51.543
+!MESSAGE Unable to parse ProbeList output to get probe ref count: []
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-05-18 14:14:15.439
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@af73733): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-target-select remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión. java.lang.Exception: localhost:2331: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-05-18 14:14:15.439
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2331
+
+Error message from debugger back end:
+localhost:2331: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+!STACK 0
+java.lang.Exception: localhost:2331: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-18 14:14:36.232
+!MESSAGE SWO session connected on port 2332->57941 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-18 14:14:36.407
+!MESSAGE Telnet session connected on port 2333->57942 @ 127.0.0.1
+
+!ENTRY com.crt.log 4 -1 2020-05-18 14:15:06.456
+!MESSAGE Attempted to beginRule: R/, does not match outer scope rule: MultiRule[P/Zigbee_ejemploClase_Router,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos_ejemploClase,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos_ejemploClase,P/Thread_leader,P/Zigbee_ejemploClase_BlackBox,P/P01_mwa_coordinator,P/P01_mwa_EndDevice]
+!STACK 0
+java.lang.Exception: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: MultiRule[P/Zigbee_ejemploClase_Router,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos_ejemploClase,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos_ejemploClase,P/Thread_leader,P/Zigbee_ejemploClase_BlackBox,P/P01_mwa_coordinator,P/P01_mwa_EndDevice]
+	at com.crt.utils.general.Reporter.log(Reporter.java:579)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:509)
+	at com.crt.config.database.ChipVendor.save(ChipVendor.java:730)
+	at com.crt.config.database.TargetConfig.save(TargetConfig.java:1516)
+	at com.crt.config.SaveViewInfo.saving(SaveViewInfo.java:102)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:387)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:204)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:207)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1172)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1151)
+	at org.eclipse.core.internal.resources.Project.close(Project.java:197)
+	at org.eclipse.ui.actions.CloseResourceAction.invokeOperation(CloseResourceAction.java:171)
+	at org.eclipse.ui.actions.WorkspaceAction.execute(WorkspaceAction.java:159)
+	at org.eclipse.ui.actions.WorkspaceAction$1.runInWorkspace(WorkspaceAction.java:459)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: MultiRule[P/Zigbee_ejemploClase_Router,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos_ejemploClase,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos_ejemploClase,P/Thread_leader,P/Zigbee_ejemploClase_BlackBox,P/P01_mwa_coordinator,P/P01_mwa_EndDevice]
+	at org.eclipse.cdt.internal.core.settings.model.ExceptionFactory.createCoreException(ExceptionFactory.java:29)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:210)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionStorageManager.setProjectDescription(CProjectDescriptionStorageManager.java:153)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:866)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:816)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:809)
+	at org.eclipse.cdt.core.model.CoreModel.setProjectDescription(CoreModel.java:1400)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:504)
+	... 15 more
+Caused by: java.lang.IllegalArgumentException: Attempted to beginRule: R/, does not match outer scope rule: MultiRule[P/Zigbee_ejemploClase_Router,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos_ejemploClase,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos_ejemploClase,P/Thread_leader,P/Zigbee_ejemploClase_BlackBox,P/P01_mwa_coordinator,P/P01_mwa_EndDevice]
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:66)
+	at org.eclipse.core.internal.jobs.ThreadJob.illegalPush(ThreadJob.java:137)
+	at org.eclipse.core.internal.jobs.ThreadJob.push(ThreadJob.java:392)
+	at org.eclipse.core.internal.jobs.ImplicitJobs.begin(ImplicitJobs.java:66)
+	at org.eclipse.core.internal.jobs.JobManager.beginRule(JobManager.java:297)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:124)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2243)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2290)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2322)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(CModelOperation.java:644)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:208)
+	... 21 more
+
+!ENTRY com.crt.log 1 0 2020-05-18 14:15:15.141
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.crt.debugcommon 1 0 2020-05-18 14:15:15.141
+!MESSAGE RedlinkServer telnet session connected on port 3025->57958 @ 127.0.0.1
+
+!ENTRY com.crt.debugcommon 4 0 2020-05-18 14:15:17.426
+!MESSAGE Unable to parse ProbeList output to get probe ref count: []
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2020-05-18 14:15:26.759
+!MESSAGE Error in final launch sequence:
+
+Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:242)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:94)
+	at com.nxp.mcuxpresso.core.debug.support.segger.launches.JLinkLaunchDelegate.launch(JLinkLaunchDelegate.java:290)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:862)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:720)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1029)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.Exception: localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-05-18 14:15:26.759
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+!STACK 0
+java.lang.Exception: localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2020-05-18 14:15:53.923
+!MESSAGE Error in final launch sequence:
+
+Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:242)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:94)
+	at com.nxp.mcuxpresso.core.debug.support.segger.launches.JLinkLaunchDelegate.launch(JLinkLaunchDelegate.java:290)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:862)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:720)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1029)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.Exception: localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-05-18 14:15:53.924
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2336
+
+Error message from debugger back end:
+localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+!STACK 0
+java.lang.Exception: localhost:2336: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-18 14:16:17.983
+!MESSAGE SWO session connected on port 2334->57978 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-18 14:16:18.962
+!MESSAGE Telnet session connected on port 2335->57979 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-18 14:21:17.437
+!MESSAGE SWO session connected on port 2334->58057 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-18 14:21:18.428
+!MESSAGE Telnet session connected on port 2335->58058 @ 127.0.0.1
+
+!ENTRY com.crt.debugcommon 4 0 2020-05-18 18:50:41.361
+!MESSAGE There is already a running debug session for the launch configuration 'Thread_router JLink Debug'.
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-18 18:51:07.174
+!MESSAGE SWO session connected on port 2334->53717 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-18 18:51:07.969
+!MESSAGE Telnet session connected on port 2335->53718 @ 127.0.0.1
+
+!ENTRY com.crt.log 4 -1 2020-05-18 18:52:32.224
+!MESSAGE Attempted to beginRule: R/, does not match outer scope rule: MultiRule[P/Zigbee_ejemploClase_Router,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos_ejemploClase,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos_ejemploClase,P/Zigbee_ejemploClase_BlackBox,P/Thread_router,P/P01_mwa_coordinator,P/P01_mwa_EndDevice]
+!STACK 0
+java.lang.Exception: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: MultiRule[P/Zigbee_ejemploClase_Router,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos_ejemploClase,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos_ejemploClase,P/Zigbee_ejemploClase_BlackBox,P/Thread_router,P/P01_mwa_coordinator,P/P01_mwa_EndDevice]
+	at com.crt.utils.general.Reporter.log(Reporter.java:579)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:509)
+	at com.crt.config.database.ChipVendor.save(ChipVendor.java:730)
+	at com.crt.config.database.TargetConfig.save(TargetConfig.java:1516)
+	at com.crt.config.SaveViewInfo.saving(SaveViewInfo.java:102)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:387)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:204)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:207)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1172)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1151)
+	at org.eclipse.core.internal.resources.Project.close(Project.java:197)
+	at org.eclipse.ui.actions.CloseResourceAction.invokeOperation(CloseResourceAction.java:171)
+	at org.eclipse.ui.actions.WorkspaceAction.execute(WorkspaceAction.java:159)
+	at org.eclipse.ui.actions.WorkspaceAction$1.runInWorkspace(WorkspaceAction.java:459)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: MultiRule[P/Zigbee_ejemploClase_Router,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos_ejemploClase,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos_ejemploClase,P/Zigbee_ejemploClase_BlackBox,P/Thread_router,P/P01_mwa_coordinator,P/P01_mwa_EndDevice]
+	at org.eclipse.cdt.internal.core.settings.model.ExceptionFactory.createCoreException(ExceptionFactory.java:29)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:210)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionStorageManager.setProjectDescription(CProjectDescriptionStorageManager.java:153)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:866)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:816)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:809)
+	at org.eclipse.cdt.core.model.CoreModel.setProjectDescription(CoreModel.java:1400)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:504)
+	... 15 more
+Caused by: java.lang.IllegalArgumentException: Attempted to beginRule: R/, does not match outer scope rule: MultiRule[P/Zigbee_ejemploClase_Router,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos_ejemploClase,P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos_ejemploClase,P/Zigbee_ejemploClase_BlackBox,P/Thread_router,P/P01_mwa_coordinator,P/P01_mwa_EndDevice]
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:66)
+	at org.eclipse.core.internal.jobs.ThreadJob.illegalPush(ThreadJob.java:137)
+	at org.eclipse.core.internal.jobs.ThreadJob.push(ThreadJob.java:392)
+	at org.eclipse.core.internal.jobs.ImplicitJobs.begin(ImplicitJobs.java:66)
+	at org.eclipse.core.internal.jobs.JobManager.beginRule(JobManager.java:297)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:124)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2243)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2290)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2322)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(CModelOperation.java:644)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:208)
+	... 21 more
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-18 18:53:00.262
+!MESSAGE SWO session connected on port 2332->53758 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-18 18:53:01.253
+!MESSAGE Telnet session connected on port 2333->53760 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-18 19:03:55.709
+!MESSAGE SWO session connected on port 2332->53861 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-18 19:03:56.696
+!MESSAGE Telnet session connected on port 2333->53862 @ 127.0.0.1
+
+!ENTRY com.crt.log 4 -1 2020-05-18 19:09:02.230
+!MESSAGE Attempted to beginRule: R/, does not match outer scope rule: P/Thread_leader
+!STACK 0
+java.lang.Exception: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: P/Thread_leader
+	at com.crt.utils.general.Reporter.log(Reporter.java:579)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:509)
+	at com.crt.config.database.ChipVendor.save(ChipVendor.java:730)
+	at com.crt.config.database.TargetConfig.save(TargetConfig.java:1516)
+	at com.crt.config.SaveViewInfo.saving(SaveViewInfo.java:102)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:387)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:204)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:207)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1172)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1151)
+	at org.eclipse.core.internal.resources.Project.close(Project.java:197)
+	at org.eclipse.ui.actions.CloseResourceAction.invokeOperation(CloseResourceAction.java:171)
+	at org.eclipse.ui.actions.WorkspaceAction.execute(WorkspaceAction.java:159)
+	at org.eclipse.ui.actions.WorkspaceAction$1.runInWorkspace(WorkspaceAction.java:459)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: P/Thread_leader
+	at org.eclipse.cdt.internal.core.settings.model.ExceptionFactory.createCoreException(ExceptionFactory.java:29)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:210)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionStorageManager.setProjectDescription(CProjectDescriptionStorageManager.java:153)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:866)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:816)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:809)
+	at org.eclipse.cdt.core.model.CoreModel.setProjectDescription(CoreModel.java:1400)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:504)
+	... 15 more
+Caused by: java.lang.IllegalArgumentException: Attempted to beginRule: R/, does not match outer scope rule: P/Thread_leader
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:66)
+	at org.eclipse.core.internal.jobs.ThreadJob.illegalPush(ThreadJob.java:137)
+	at org.eclipse.core.internal.jobs.ThreadJob.push(ThreadJob.java:392)
+	at org.eclipse.core.internal.jobs.ImplicitJobs.begin(ImplicitJobs.java:66)
+	at org.eclipse.core.internal.jobs.JobManager.beginRule(JobManager.java:297)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:124)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2243)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2290)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2322)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(CModelOperation.java:644)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:208)
+	... 21 more
+
+!ENTRY com.nxp.mcuxpresso.trace.core 1 0 2020-05-18 19:09:13.069
+!MESSAGE SWO session connected on port 2334->53918 @ 127.0.0.1
+
+!ENTRY com.crt.dsfdebug 1 0 2020-05-18 19:09:14.049
+!MESSAGE Telnet session connected on port 2335->53919 @ 127.0.0.1

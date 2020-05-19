@@ -3981,46 +3981,7 @@ static void SHELL_CoapAckReceive
 
     if(gCoapSuccess_c == sessionStatus)
     {
-        ntop(AF_INET6, (ipAddr_t*)&pSession->remoteAddrStorage.ss_addr, remoteAddrStr, INET6_ADDRSTRLEN);
-        /* coap rsp from <IP addr>: <ACK> <rspcode: X.XX> <payload ASCII> */
-        shell_printf("coap rsp from ");
-        shell_printf(remoteAddrStr);
-
-        if (gCoapAcknowledgement_c == pSession->msgType)
-        {
-            shell_printf(" ACK ");
-        }
-        /* Print Code */
-        shell_writeDec(pSession->code);
-
-        /* Print options - for now just Location-Path, more can be added */
-        bool_t first = TRUE;
-        coapOption_t  *pOptDetails = ListGetHeadMsg(&pSession->pRxOptionList);
-        while (pOptDetails)
-        {
-            switch (pOptDetails->optName)
-            {
-                case COAP_LOCATION_PATH_OPTION:
-                {
-                    if (first)
-                    {
-                        shell_printf("\r\nLocation-Path: ");
-                        first = FALSE;
-                    }
-                    shell_printf("/");
-                    shell_writeN((char*)pOptDetails->optValue, pOptDetails->optValueLen);
-                    break;
-                }
-                default:
-                {
-                    break;
-                }
-            }
-            pOptDetails = ListGetNextMsg(pOptDetails);
-        }
-        shell_printf("\r\n");
-        /* Check if payload is ascii */
-        if(0 != dataLen)
+        if ('X' == pData[0])
         {
             uint32_t index = 0;
             uint8_t* pCrtChar = (uint8_t*)pData;
@@ -4042,7 +4003,77 @@ static void SHELL_CoapAckReceive
                 shell_printf(" 0x");
                 SHELL_PrintBuff(pData, dataLen);
             }
+            ntop(AF_INET6, (ipAddr_t*)&pSession->remoteAddrStorage.ss_addr, remoteAddrStr, INET6_ADDRSTRLEN);
+            /* coap rsp from <IP addr>: <ACK> <rspcode: X.XX> <payload ASCII> */
+            shell_printf(" from IPv6: ");
+            shell_printf(remoteAddrStr);
         }
+        else
+        {
+            ntop(AF_INET6, (ipAddr_t*)&pSession->remoteAddrStorage.ss_addr, remoteAddrStr, INET6_ADDRSTRLEN);
+            /* coap rsp from <IP addr>: <ACK> <rspcode: X.XX> <payload ASCII> */
+            shell_printf("coap rsp from ");
+            shell_printf(remoteAddrStr);
+
+            if (gCoapAcknowledgement_c == pSession->msgType)
+            {
+                shell_printf(" ACK ");
+            }
+            /* Print Code */
+            shell_writeDec(pSession->code);
+
+            /* Print options - for now just Location-Path, more can be added */
+            bool_t first = TRUE;
+            coapOption_t  *pOptDetails = ListGetHeadMsg(&pSession->pRxOptionList);
+            while (pOptDetails)
+            {
+                switch (pOptDetails->optName)
+                {
+                    case COAP_LOCATION_PATH_OPTION:
+                    {
+                        if (first)
+                        {
+                            shell_printf("\r\nLocation-Path: ");
+                            first = FALSE;
+                        }
+                        shell_printf("/");
+                        shell_writeN((char*)pOptDetails->optValue, pOptDetails->optValueLen);
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
+                pOptDetails = ListGetNextMsg(pOptDetails);
+            }
+            shell_printf("\r\n");
+            /* Check if payload is ascii */
+            if(0 != dataLen)
+            {
+                uint32_t index = 0;
+                uint8_t* pCrtChar = (uint8_t*)pData;
+
+                while ((*pCrtChar < 127) && (index < dataLen))
+                {
+                    pCrtChar ++;
+                    index ++;
+                }
+                /* if all characters ar ascii, print as string */
+                if (index == dataLen)
+                {
+                    shell_write(" ");
+                    shell_writeN((char*)pData, dataLen);
+                }
+                /* else, print as hex */
+                else
+                {
+                    shell_printf(" 0x");
+                    SHELL_PrintBuff(pData, dataLen);
+                }
+            }
+        }
+
     }
     else
     {
@@ -4050,7 +4081,6 @@ static void SHELL_CoapAckReceive
     }
     shell_cmd_finished();
 }
-
 /*!*************************************************************************************************
 \private
 \fn     static int8_t  SHELL_Ping(uint8_t argc, char *argv[])

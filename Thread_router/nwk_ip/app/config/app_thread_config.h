@@ -122,7 +122,7 @@ Public macros
    To set the scan mask to a single channel, set the mask to 0x00000001 shifted with the channel ID
    e.g.: to set mask for channel 25, set THR_SCANCHANNEL_MASK to: (0x00000001 << 25) */
 #ifndef THR_SCANCHANNEL_MASK
-    #define THR_SCANCHANNEL_MASK                        (0x00000001 << 25)
+    #define THR_SCANCHANNEL_MASK                        (0x00000001 << 13)
 #endif
 
 
@@ -142,7 +142,7 @@ Public macros
 /*! The PAN identifier.
    If this value is 0xFFFF a random PAN ID will be generated on network creation */
 #ifndef THR_PAN_ID
-    #define THR_PAN_ID                                  THR_ALL_FFs16
+    #define THR_PAN_ID                                  0xFE
 #endif
 
 /*! The extended Pan ID.
